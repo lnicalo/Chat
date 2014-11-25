@@ -1,0 +1,35 @@
+FICHERO1 = sermess_select
+FICHERO2 = storemessage
+FICHERO3 = submitmessage
+FICHERO4 = serstoremess_select
+FICHERO5 = sersubmitmess_select
+
+FICHEROS-CABECERA =	ttg.h
+FICHERO-EJECUTABLE =	$(FICHERO1)
+CC = gcc
+LIBS = -lnsl
+
+
+all:	$(FICHERO-EJECUTABLE)
+
+$(FICHERO-EJECUTABLE):	$(FICHERO1).o $(FICHERO2).o $(FICHERO3).o $(FICHERO4).o $(FICHERO5).o
+			$(CC) $(FICHERO1).o $(FICHERO2).o $(FICHERO3).o $(FICHERO4).o $(FICHERO5).o -o $@ $(LIBS)
+
+$(FICHERO1).o:	$(FICHERO1).c $(FICHEROS-CABECERA)
+	$(CC) -c $(FICHERO1).c
+
+$(FICHERO2).o:	 $(FICHERO2).c $(FICHEROS-CABECERA)
+	$(CC) -c $(FICHERO2).c
+
+$(FICHERO3).o:	 $(FICHERO3).c $(FICHEROS-CABECERA)
+	$(CC) -c $(FICHERO3).c
+
+$(FICHERO4).o:	 $(FICHERO4).c $(FICHEROS-CABECERA)
+	$(CC) -c $(FICHERO4).c
+
+$(FICHERO5).o:	 $(FICHERO5).c $(FICHEROS-CABECERA)
+	$(CC) -c $(FICHERO5).c
+
+clean:
+	\rm *.o
+	\rm $(FICHERO-EJECUTABLE)
