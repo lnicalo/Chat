@@ -1,9 +1,0 @@
-Cliente de servicio de mensajería
-Cliente que envía un mensaje a un destinatario. El remitente se toma como parámetro del programa. El nombre del destinatario se pide en la ejecución del programa. Si el login del destinatario es correcto se lee de la entrada estándar el mensaje que se desea enviar. El usuario indica que ha terminado de escribir el mensaje con CTRL+D.
-
-Diseño e implementación 
-Uno de los principales problemas ha sido la escritura en el socket de tambuffer en tambuffer. Es necesario tener en cuenta que lo que hay que escribir no es siempre tambuffer. Puede ser que lo que nos quede por escribir sea menor que tambuffer. Por esta razón se hace el mínimo entre tambuffer y la cantidad de bytes que nos quedan por escribir.
-
-Para comprobar la validez del login miramos que hay un único retorno de carro y que éste está en el séptimo caracter. También consideramos login incorrecto que se introduzca un CTRL+D antes de los siete bytes del login.
-
-Cuando se produce un error y tenemos un socket conectado se termina el programa directamente con exit(1) y no se cierra la conexión. Esto es así por el diseño que se ha hecho. En el diagrama de flujo no se especifica que haya que cerrarla.
